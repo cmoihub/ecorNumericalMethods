@@ -6,6 +6,7 @@ clear
 T = 10; % time of interest
 
 m = 69.1; g = 9.81; cD = 0.25;
+numberOfPoints = 2: 10: 142;
 
 % analytical solution
 distanceA = (m / cD) * log(cosh(sqrt((g * cD)/m) * T));
@@ -13,7 +14,8 @@ fprintf ('Analytical = %f\n', distanceA);
 
 % numerical solution
 fprintf ('Intervals    Numerical\n');
-for n = 2: 10: 142; % n = number of points
+
+for n = numberOfPoints
   t = linspace (0, T, n);
   v = sqrt(g * m / cD) * tanh(sqrt(g * cD / m) * t);
   distanceN = trapz(t, v);
