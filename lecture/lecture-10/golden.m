@@ -19,6 +19,7 @@ end
 % set up for first iteration
 x1 = xL + p1 * (xU - xL); fx1 = f(x1);
 x2 = xU - p1 * (xU - xL); fx2 = f(x2);
+fprintf('d = %f', p1*(xU-xL));
 for k = 1 : 1000
  
     Emax = (xU - xL) / 2;
