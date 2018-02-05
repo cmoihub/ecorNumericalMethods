@@ -1,5 +1,9 @@
-function [xr] = bisect (f, xl, xh, Edes, display)
-% BISECT  Finds a root by performing a bisection search.
+% Craig Isesele
+% 100950074
+% ECOR 2606 LAB 4
+
+function [xr] = falsePos(f, xl, xh, Edes, display)
+% FALSEPOS Finds a root by performing a false position search.
 % Inputs: f = a function of one variable
 %         xl = lower bound of range to be searched
 %         xh = upper bound of range to be searched
@@ -20,10 +24,8 @@ end
  
 signOfYl = sign(yl);  % keep track of sign of function at xl
 for k = 1:1000         % 1000 max iterations
-    
-%     xr = (xl + xh) /2; 
     xr = xh - f(xh)*(xl-xh)/(f(xl)-f(xh));
-    yr = f(xr);  Emax = (xh - xl) / 2;
+    yr = f(xr);  Emax = abs(xl-(xh + xl) / 2);
    
     if display
         fprintf ('%5d   %12.6f %12.6f %12.6f %12.6f %12.6f\n', k, xl, xh, xr, yr, Emax);
