@@ -9,7 +9,7 @@ Temp = (300:5:320);
 Cp = [4.1354;10.0120;6.5956;3.5266;2.6559];
 
 figure(1);
-plot(Temp, Cp, 'ko');
+plot(Temp, Cp, 'ro');
 title('Temp vs. Cp');
 ylabel('Cp');
 xlabel('Temp');
@@ -30,7 +30,7 @@ p2 = polyfit(ft', Cp, 4);
 f1 = @(x) polyval(p2, t(x));
 
 % Plot
-fplot(f1, [300 320], 'g--');
+fplot(f1, [300 320], 'k');
 
 fprintf('Question 1:\n');
 fprintf('Using interpolating polynomial, at Temp = 303,  Cp = %f\n', f1(303));
@@ -41,7 +41,7 @@ s = spline(Temp, Cp);
 cubicSpline = @(x) ppval(s, x);
 
 % Second plot
-fplot(cubicSpline, [300 320], 'b-.');
+fplot(cubicSpline, [300 320], 'b*');
 
 % Extrapolating
 fprintf('Using cubic spline, at Temp = 303,  Cp = %f\n', cubicSpline(303));
