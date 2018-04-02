@@ -6,7 +6,7 @@ clear;
 
 % Question 1:
 Temp = (300:5:320);
-Cp = [4.1354;10.0120;6.5956;3.5266;2.6559];
+Cp = [4.1354, 10.0120, 6.5956, 3.5266, 2.6559];
 
 figure(1);
 plot(Temp, Cp, 'ko');
@@ -26,7 +26,7 @@ t = @(x) (x - mid) / half;
 ft = t(Temp);
 
 % Had to transpose ft's elements to match Cp
-p2 = polyfit(ft', Cp, 4);
+p2 = polyfit(ft, Cp, 4);
 f1 = @(x) polyval(p2, t(x));
 
 % Plot
