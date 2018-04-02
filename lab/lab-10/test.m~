@@ -15,10 +15,6 @@ plot(temp, cp, 'k--');
 p = polyfit(scale(temp), cp, 4);
 v = @(x) polyval(p, scale(x, temp));
 fplot(v, [firstTemp lastTemp], 'bo');
-
-root = fzero (@(cp) v(cp) - 6, [306 320]);
-fprintf('T is %f when Cp is 6\n\n', root);
-
 printer(303, v, 'interpolating polynomial');
 printer(312, v, 'interpolating polynomial\n');
 fprintf('End of Part 1i\n')
@@ -46,9 +42,12 @@ fprintf('Distance travelled is %f\n', trapz(t,v))
 fprintf('End of Part 3b\n')
 
 p = polyfit(t, v, 3);
-val = polyval(p, t);
+val = @(t) polyval(p, t);
 h = (max(t) - min(t))/2;
-cubic = h*(val(1) + 4*val(2) + val(3))/3;
+cubic = h*(val(1) + 4*val(5.5   ) + val(10))/3;
+fprintf('Distance travelled is %f\n', cubic)
+fprintf('End of Part 3c\n')
+fprintf('Distance travelled is %f\n', integral(val, 1, 10))
 fprintf('End of Part 3c\n')
 hold off;
 

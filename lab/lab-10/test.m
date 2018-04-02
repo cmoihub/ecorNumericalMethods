@@ -15,10 +15,6 @@ plot(temp, cp, 'k--');
 p = polyfit(scale(temp), cp, 4);
 v = @(x) polyval(p, scale(x, temp));
 fplot(v, [firstTemp lastTemp], 'bo');
-
-root = fzero (@(cp) v(cp) - 6, [306 320]);
-fprintf('T is %f when Cp is 6\n\n', root);
-
 printer(303, v, 'interpolating polynomial');
 printer(312, v, 'interpolating polynomial\n');
 fprintf('End of Part 1i\n')
@@ -34,6 +30,9 @@ printer(303, hermite, 'piecewise cubic');
 printer(312, hermite, 'piecewise cubic\n');
 fplot(hermite, range, 'go')
 fprintf('End of Part 1iii\n')
+
+root = fzero (@(cp) v(cp) - 6, [306 320]);
+fprintf('T is %f when Cp is 6\n\n', root);
 
 e = 0.6;
 [m, c] = randomize();
